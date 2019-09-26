@@ -1,0 +1,24 @@
+<html>
+<head>
+<script>
+function init() {
+    document.body.onkeydown = function(e){
+        //alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
+        switch(e.keyCode) {
+        case 39:
+            {% if n < content|length %}document.location = "/{{ n + 1 }}";{% endif %}
+            break;
+        case 37:
+            {% if n > 1 %}document.location = "/{{ n - 1 }}";{% endif %}
+            break;
+        }
+    }
+}
+</script>
+</head>
+<body onload="init()">
+{% include content[n-1].template|default('index.html') %}
+{% if n > 1 %}<a href="/{{ n - 1 }}">Vorige</a>{% endif %} | {% if n < content|length %}<a href="/{{ n + 1 }}">Volgende</a>{% endif %}
+
+</body>
+</html>

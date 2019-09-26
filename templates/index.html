@@ -1,0 +1,10 @@
+    <ul>
+    {% for sheet in content %}
+    {% if n == loop.index %}
+        <li><b>{{ sheet.title }}</b></li>
+    {% else %}
+        <li>{{ sheet.title }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+
